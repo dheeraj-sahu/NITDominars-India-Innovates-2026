@@ -114,10 +114,7 @@ Delhi receives **600–800mm of rainfall in just 3 monsoon months**. Its drainag
 ## 📸 Screenshots
 
 ### Map View — Flood Risk Layer
-```
 <img width="1919" height="867" alt="image" src="https://github.com/user-attachments/assets/d669b3f4-cd18-4399-9047-85503efc5fe9" />
-
-```
 
 ---
 
