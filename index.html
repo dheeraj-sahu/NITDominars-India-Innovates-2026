@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FloodSense AI — Delhi Urban Flood Intelligence</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+  <link rel="stylesheet" href="./main.css">
+
+  <style>
+    #loader {
+      position: fixed; inset: 0;
+      background: #05090f;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      z-index: 9999;
+      gap: 16px;
+    }
+    .loader-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px; font-weight: 800;
+      color: #ddeeff;
+    }
+    .loader-logo em { color: #00dcc8; font-style: normal; }
+    .loader-bar {
+      width: 200px; height: 3px;
+      background: #1a2e4a;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .loader-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00dcc8, #00e5ff);
+      border-radius: 99px;
+      animation: loadAnim 1.5s ease-in-out infinite;
+    }
+    @keyframes loadAnim {
+      0%   { width: 0%; margin-left: 0%; }
+      50%  { width: 60%; margin-left: 20%; }
+      100% { width: 0%; margin-left: 100%; }
+    }
+    .loader-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; letter-spacing: 2px;
+      color: #3d5878;
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-logo">Flood<em>Sense</em> AI</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div class="loader-text">LOADING DELHI FLOOD DATA…</div>
+</div>
+
+
+<header id="header">
+  <div class="logo">
+    <div class="logo-mark">🌊</div>
+    <div>
+      <div class="logo-text">Flood<em>Sense</em> AI</div>
+      <div class="logo-sub">DELHI URBAN FLOOD INTELLIGENCE · PRE-MONSOON 2026</div>
+    </div>
+  </div>
+
+  <div class="header-status">
+    <div class="status-pill live">
+      <div class="live-dot"></div>
+      LIVE
+    </div>
+    <div class="status-pill">
+      <span id="status-wards">120 Wards</span>
+    </div>
+    <div class="status-pill">
+      <span id="status-hotspots">— Hotspots</span>
+    </div>
+  </div>
+
+  <nav class="header-nav">
+    <button class="nav-tab active" id="nav-map">🗺 MAP</button>
+    <button class="nav-tab"        id="nav-analytics">📊 ANALYTICS</button>
+    <button class="nav-tab"        id="nav-actions">⚡ ACTIONS</button>
+  </nav>
+</header>
+
+<div id="app">
+
+  <aside id="sidebar">
+    <div class="sidebar-tabs">
+      <button class="s-tab active" id="s-tab-overview">OVERVIEW</button>
+      <button class="s-tab"        id="s-tab-wards">WARDS</button>
+      <button class="s-tab"        id="s-tab-detail">DETAIL</button>
+    </div>
+    <div class="sidebar-body" id="sidebar-body">
+    </div>
+  </aside>
+
+  <div id="main-content">
+
+    
+    <div id="view-map" style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
+
+      <div class="map-wrapper">
+        <div id="map"></div>
+
+        <div class="map-overlay-tl">
+          <div class="map-toolbar" id="map-toolbar">
+          </div>
+        </div>
+
+        <div class="map-overlay-tr">
+          <div class="map-legend">
+            <div class="legend-heading" id="legend-heading">FLOOD RISK</div>
+            <div id="map-legend-body">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="charts-panel">
+        <div class="chart-cell">
+          <div class="chart-title">
+            48-HR RAINFALL FORECAST
+            <span style="color:var(--high);font-size:9px">● Heavy peak expected at H10–H26</span>
+          </div>
+          <div class="chart-box"><canvas id="chart-rainfall"></canvas></div>
+        </div>
+        <div class="chart-cell">
+          <div class="chart-title">RISK DISTRIBUTION</div>
+          <div class="chart-box"><canvas id="chart-risk-donut"></canvas></div>
+        </div>
+        <div class="chart-cell">
+          <div class="chart-title">READINESS BY ZONE</div>
+          <div class="chart-box"><canvas id="chart-zone-ready"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div id="view-analytics" style="display:none;flex:1;overflow-y:auto;padding:16px;">
+    </div>
+
+   
+    <div id="view-actions" style="display:none;flex:1;overflow-y:auto;padding:20px;">
+    </div>
+
+  </div>
+
+</div>
+
+<script src="./utils.js"></script>
+<script src="./data-store.js"></script>
+<script src="./sidebar.js"></script>
+<script src="./map.js"></script>
+<script src="./charts.js"></script>
+<script src="./analytics.js"></script>
+<script src="./actions.js"></script>
+<script src="./app.js"></script>
+
+</body>
+</html>
