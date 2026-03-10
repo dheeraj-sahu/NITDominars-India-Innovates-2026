@@ -115,24 +115,8 @@ Delhi receives **600–800mm of rainfall in just 3 monsoon months**. Its drainag
 
 ### Map View — Flood Risk Layer
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│  🌊 FloodSense AI    ● LIVE · 120 Wards · 709 Hotspots    [MAP] [ANALYTICS] [ACTIONS]  │
-├──────────────┬──────────────────────────────────────────────────────┤
-│  OVERVIEW    │                                                       │
-│  ──────────  │          🗺 Interactive Delhi Map                     │
-│  19 Critical │     ● ● ● Ward markers colored by risk level         │
-│  87 High     │   ○ ○ ●   Red = Critical, Orange = High              │
-│  709 Hotspot │     ● ○   Yellow = Moderate, Green = Low             │
-│  58.2 Ready  │                                                       │
-│              │  ┌──────────────────┐                                │
-│  Top Wards   │  │ FLOOD RISK       │                                │
-│  > Karol Bgh │  │ ● Critical >68%  │                                │
-│  > Mustafabd │  │ ● High 48-68%    │                                │
-│  > Seelampur │  │ ● Moderate       │                                │
-│              │  │ ● Low <28%       │                                │
-├──────────────┴──────────────────────────────────────────────────────┤
-│  📊 48-Hr Forecast │ 🍩 Risk Distribution │ 📊 Readiness by Zone    │
-└─────────────────────────────────────────────────────────────────────┘
+<img width="1919" height="867" alt="image" src="https://github.com/user-attachments/assets/d669b3f4-cd18-4399-9047-85503efc5fe9" />
+
 ```
 
 ---
